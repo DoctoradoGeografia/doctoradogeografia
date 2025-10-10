@@ -1,21 +1,118 @@
-# React + TypeScript + Vite
+# Doctorado en Geografía - UNSJ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web oficial del Doctorado en Geografía de la Universidad Nacional de San Juan (UNSJ), desarrollado con React + TypeScript + Vite.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** con TypeScript
+- **Vite** como herramienta de desarrollo
+- **React Router DOM v6** con `createBrowserRouter` para navegación
+- **Tailwind CSS** para estilos (con colores personalizados del proyecto)
+- **Firebase** para backend y autenticación
+- **PostCSS** + **Autoprefixer** para compatibilidad CSS
 
-## React Compiler
+## 📁 Estructura del Proyecto
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+```
+src/
+├── components/          # Componentes reutilizables
+│   ├── Navbar.tsx      # Barra de navegación
+│   └── Footer.tsx      # Pie de página
+├── pages/              # Páginas de la aplicación
+│   ├── Home.tsx        # Página principal
+│   ├── Doctorado.tsx   # Información del doctorado
+│   ├── Noticias.tsx    # Noticias y eventos
+│   ├── Cursos.tsx      # Listado de cursos
+│   ├── Contacto.tsx    # Información de contacto
+│   ├── Login.tsx       # Autenticación
+│   └── Dashboard.tsx   # Panel de administración
+├── router/             # Configuración de rutas
+│   └── router.tsx      # Rutas principales con createBrowserRouter
+├── firebase/           # Configuración de Firebase
+├── App.tsx            # Layout principal con Outlet
+└── main.tsx           # Punto de entrada con RouterProvider
+```
 
-Note: This will impact Vite dev & build performances.
+## 🎨 Paleta de Colores
 
-## Expanding the ESLint configuration
+El proyecto utiliza una paleta de colores personalizada integrada con Tailwind CSS:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Purple Theme
+- `purple-1` a `purple-12`: Escalas de morado
+- `purple-9`: Color principal morado (`#a6177c`)
+
+### Blue Theme  
+- `blue-1` a `blue-12`: Escalas de azul
+- `blue-9`: Color principal azul (`#216196`)
+
+### Colores Principales
+- `accent`: #216196 (Azul principal)
+- `background`: #FAFDFF (Fondo)
+- `text`: #222936 (Texto principal)
+
+## 🛠️ Instalación y Configuración
+
+### Pasos realizados en el setup:
+
+1. **Instalación de dependencias principales:**
+```bash
+npm install react-router-dom firebase tailwindcss postcss autoprefixer @tailwindcss/postcss
+npm install --save-dev @types/react-router-dom
+```
+
+2. **Configuración de Tailwind CSS:**
+   - Creación de `tailwind.config.js` con colores personalizados
+   - Configuración de `postcss.config.js` con `@tailwindcss/postcss`
+   - Integración de directivas `@tailwind` en `index.css`
+
+3. **Implementación de React Router v6:**
+   - Patrón moderno con `createBrowserRouter`
+   - Estructura de rutas anidadas con `Outlet`
+   - Separación de configuración en `src/router/router.tsx`
+
+4. **Estructura de componentes:**
+   - Layout principal en `App.tsx` con Navbar, Outlet y Footer
+   - Páginas individuales como componentes separados
+   - Componentes reutilizables (Navbar, Footer)
+
+## 🎯 Funcionalidades Planeadas
+
+- ✅ Estructura base del proyecto
+- ✅ Página de inicio (Home) - **COMPLETADA**
+- ⏳ Información del doctorado
+- ⏳ Sistema de noticias/posts
+- ⏳ Listado de cursos
+- ⏳ Formulario de contacto
+- ⏳ Sistema de autenticación (Firebase)
+- ⏳ Dashboard administrativo
+- ⏳ Internacionalización (ES/EN)
+
+## 🚦 Desarrollo
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+
+# Construir para producción
+npm run build
+
+# Preview de la build
+npm run preview
+```
+
+## 📋 Notas de Desarrollo
+
+- El proyecto sigue un **flujo incremental**: cada página se desarrolla individualmente y se aprueba antes de continuar
+- Se implementó el patrón de React Router usado en el repositorio de referencia: [Kuadc/MyStore](https://github.com/Kuadc/MyStore)
+- Los colores están configurados como clases utilitarias de Tailwind para fácil uso
+- El SEO está optimizado para términos clave: "Doctorado en Geografía", "San Juan", "Argentina", "UNSJ"
+
+---
+
+**Universidad Nacional de San Juan - Facultad de Filosofía, Humanidades y Artes**
 
 ```js
 export default defineConfig([
