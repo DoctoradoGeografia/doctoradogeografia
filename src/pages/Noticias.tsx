@@ -22,7 +22,7 @@ const Noticias = () => {
                 {/* Globe with orbits */}
                 <div className="absolute inset-0">
                   <img 
-                    src="https://i.imghippo.com/files/Rxx5094Mlc.png" 
+                    src="https://i.imghippo.com/files/f2143ts.webp" 
                     alt="Globe"
                     className="w-full h-full object-contain opacity-80"
                   />
