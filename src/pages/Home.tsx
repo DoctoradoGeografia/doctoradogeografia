@@ -4,6 +4,7 @@ import FeaturedArticleCard from '../components/FeaturedArticleCard';
 import TestimonialCard from '../components/TestimonialCard';
 import CourseCard from '../components/CourseCard';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -254,7 +255,7 @@ const Home = () => {
                       name="Dr. Castro Jorge"
                       role="Secretario"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
-                      height="h-96"
+                    
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -264,7 +265,7 @@ const Home = () => {
                       name="Dra. María González"
                       role="Investigadora"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
-                      height="h-96"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -274,7 +275,7 @@ const Home = () => {
                       name="Dr. Carlos Martínez"
                       role="Director"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
-                      height="h-96"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -284,7 +285,7 @@ const Home = () => {
                       name="Dr. Juan Pérez"
                       role="Coordinador"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
-                      height="h-96"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -294,7 +295,7 @@ const Home = () => {
                       name="Dr. Luis Fernández"
                       role="Profesor"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
-                      height="h-96"
+                      
                     />
                   </div>
                 </div>
@@ -326,9 +327,11 @@ const Home = () => {
           
           {/* Button */}
           <div className="mt-12">
-            <button className="bg-blue-4 dark:bg-purple-4 dark:text-purple-9 text-blue-9 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-blue-7  dark:hover:bg-purple-7 transition-colors duration-200">
-              Más acerca de nosotros...
-            </button>
+            <Link to="/doctorado">
+              <button className="bg-blue-4 dark:bg-purple-4 dark:text-purple-9 text-blue-9 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-blue-7  dark:hover:bg-purple-7 transition-colors duration-200">
+                Más acerca de nosotros...
+              </button>
+            </Link>
           </div>
         </div>
       </section>

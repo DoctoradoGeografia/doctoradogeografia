@@ -57,13 +57,21 @@ const Navbar = () => {
           <div className="flex justify-between items-center py-4">
             {/* Logo and Title */}
             <div className="flex items-center space-x-3">
-                <img src="https://i.imghippo.com/files/Elb9238oo.png" className="w-[30px] h-full object-contain"></img>
+                <a href="/">
+                <img 
+                src="https://i.imghippo.com/files/Elb9238oo.png" 
+                className="w-[30px] h-full object-contain"
+                alt="Logo">
+                </img>
+                </a>
               
               <div>
+                <a href="/">
                 <h1 className="text-base sm:text-xl font-bold text-gray-900 leading-tight">
                   DOCTORADO<br />
                   <span className="text-sm sm:text-base font-normal">EN GEOGRAFÍA</span>
                 </h1>
+                </a>
               </div>
             </div>
 
