@@ -1,10 +1,26 @@
 import FeatureCard from '../components/FeatureCard';
 import AuthorityCard from '../components/AuthorityCard';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Doctorado = () => {
   const [activeTab, setActiveTab] = useState<'basico' | 'perfeccionamiento'>('basico');
   const [activeAuthority, setActiveAuthority] = useState(0);
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 150; // width of card + gap
+      const newScrollLeft = direction === 'left' 
+        ? scrollContainerRef.current.scrollLeft - scrollAmount
+        : scrollContainerRef.current.scrollLeft + scrollAmount;
+      
+      scrollContainerRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Autoridades data
   const authorities = [
@@ -28,15 +44,32 @@ const Doctorado = () => {
       position: "Coordinador de Investigación",
       description: "Doctor en Ciencias Geográficas, especializado en sistemas de información geográfica y análisis espacial. Líder de proyectos de investigación nacional e internacional.",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop"
-    }
+    },
+    {
+      id: 4,
+      name: "Dr. Carlos Rodríguez",
+      position: "Coordinador de Investigación",
+      description: "Doctor en Ciencias Geográficas, especializado en sistemas de información geográfica y análisis espacial. Líder de proyectos de investigación nacional e internacional.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop"
+    },
+    {
+      id: 5,
+      name: "Dr. Carlos Rodríguez",
+      position: "Coordinador de Investigación",
+      description: "Doctor en Ciencias Geográficas, especializado en sistemas de información geográfica y análisis espacial. Líder de proyectos de investigación nacional e internacional.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop"
+    },
+    
   ];
 
   const handleNext = () => {
     setActiveAuthority((prev) => (prev + 1) % authorities.length);
+    scroll('right');
   };
 
   const handlePrev = () => {
     setActiveAuthority((prev) => (prev - 1 + authorities.length) % authorities.length);
+    scroll('left');
   };
 
   return (
@@ -343,26 +376,26 @@ const Doctorado = () => {
    <section className="w-full py-16 bg-white">
      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
        {/* Section Title */}
-       <div className="mb-12">
-         <h2 className="text-3xl lg:text-4xl font-bold text-text mb-8">
+       <div className="mb-4 sm:mb-12">
+         <h2 className="text-center sm:text-left text-3xl lg:text-4xl font-bold text-text mb-1 sm:mb-8">
            Autoridades de nuestro Doctorado
          </h2>
        </div>
 
-       <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 items-start">
+       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
          {/* Left Side - Image */}
-         <div className="flex justify-center lg:justify-start">
+         <div className="flex justify-center lg:justify-start order-2 lg:order-1">
            <img 
              src={authorities[activeAuthority].image} 
              alt={authorities[activeAuthority].name}
-             className="w-full max-w-sm h-auto object-cover rounded-lg shadow-lg grayscale"
+             className="w-full max-w-sm h-auto object-cover rounded-lg shadow-lg"
            />
          </div>
 
          {/* Right Side - Info, Controls and Thumbnails */}
-         <div className="space-y-11 ">
+         <div className="space-y-6 order-1 lg:order-2">
            {/* Info */}
-           <div className="bg-gray-2 rounded-lg p-6">
+           <div className="bg-gray-5 rounded-lg p-6">
              <h3 className="text-2xl font-bold text-text mb-2">
                {authorities[activeAuthority].name}
              </h3>
@@ -375,14 +408,14 @@ const Doctorado = () => {
            </div>
 
            {/* Navigation Controls */}
-           <div className="flex items-center justify-left gap-4">
+           <div className="flex items-center justify-center sm:justify-start gap-4">
              <button
                onClick={handlePrev}
                className="w-10 h-10 rounded-full bg-blue-6 dark:bg-purple-6 text-white flex items-center justify-center hover:bg-blue-7 dark:hover:bg-purple-7 transition-colors duration-200 shadow-md"
                aria-label="Previous"
              >
-               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
-                 <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+               <svg width="24" height="18" viewBox="0 0 24 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M9.66934 0.484306C9.97753 0.807177 10.1255 1.19731 10.1131 1.65471C10.0998 2.11211 9.93901 2.50224 9.63082 2.82511L5.27769 7.38565L22.4591 7.38565C22.8957 7.38565 23.2619 7.54063 23.5578 7.85058C23.8526 8.15946 24 8.5426 24 9C24 9.4574 23.8526 9.84108 23.5578 10.151C23.2619 10.4599 22.8957 10.6144 22.4591 10.6144H5.27769L9.66934 15.2152C9.97753 15.5381 10.1316 15.9218 10.1316 16.3663C10.1316 16.8097 9.97753 17.1928 9.66934 17.5157C9.36116 17.8386 8.99493 18 8.57066 18C8.14742 18 7.7817 17.8386 7.47352 17.5157L0.423759 10.13C0.269667 9.96861 0.160257 9.79372 0.0955391 9.60538C0.031847 9.41704 0 9.21525 0 9C0 8.78475 0.031847 8.58296 0.0955391 8.39462C0.160257 8.20628 0.269667 8.03139 0.423759 7.86996L7.51204 0.443949C7.79454 0.147984 8.14742 0 8.57066 0C8.99493 0 9.36116 0.161436 9.66934 0.484306Z" fill="currentColor"/>
                </svg>
              </button>
              
@@ -391,25 +424,33 @@ const Doctorado = () => {
                className="w-10 h-10 rounded-full bg-blue-6 dark:bg-purple-6 text-white flex items-center justify-center hover:bg-blue-7 dark:hover:bg-purple-7 transition-colors duration-200 shadow-md"
                aria-label="Next"
              >
-               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
-                 <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+               <svg width="24" height="18" viewBox="0 0 24 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M14.3307 17.5157C14.0225 17.1928 13.8745 16.8027 13.8869 16.3453C13.9002 15.8879 14.061 15.4978 14.3692 15.1749L18.7223 10.6143L1.54093 10.6143C1.10433 10.6143 0.738106 10.4594 0.442247 10.1494C0.147416 9.84054 0 9.4574 0 9C0 8.5426 0.147416 8.15892 0.442247 7.84897C0.738106 7.54009 1.10433 7.38565 1.54093 7.38565L18.7223 7.38565L14.3307 2.78475C14.0225 2.46188 13.8684 2.07821 13.8684 1.63372C13.8684 1.19031 14.0225 0.807174 14.3307 0.484304C14.6388 0.161435 15.0051 0 15.4293 0C15.8526 0 16.2183 0.161435 16.5265 0.484304L23.5762 7.86996C23.7303 8.03139 23.8397 8.20628 23.9045 8.39462C23.9682 8.58296 24 8.78475 24 9C24 9.21525 23.9682 9.41704 23.9045 9.60538C23.8397 9.79372 23.7303 9.96861 23.5762 10.13L16.488 17.5561C16.2055 17.852 15.8526 18 15.4293 18C15.0051 18 14.6388 17.8386 14.3307 17.5157Z" fill="currentColor"/>
                </svg>
              </button>
            </div>
 
-           {/* Thumbnail Gallery */}
-           <div className="flex justify-left gap-3 flex-wrap">
-             {authorities.map((authority, index) => (
-               <AuthorityCard
-                 key={authority.id}
-                 image={authority.image}
-                 name={authority.name}
-                 position={authority.position}
-                 description={authority.description}
-                 isActive={false}
-                 onClick={() => setActiveAuthority(index)}
-               />
-             ))}
+           {/* Thumbnail Gallery Carousel - Hidden on mobile */}
+           <div className="hidden sm:block relative">
+             <div 
+               ref={scrollContainerRef}
+               className="overflow-x-auto scrollbar-hide scroll-smooth"
+             >
+               <div className="flex gap-4 pb-4">
+                 {authorities.map((authority, index) => (
+                   <div key={authority.id} className="flex-shrink-0">
+                     <AuthorityCard
+                       image={authority.image}
+                       name={authority.name}
+                       position={authority.position}
+                       description={authority.description}
+                       isActive={false}
+                       onClick={() => setActiveAuthority(index)}
+                     />
+                   </div>
+                 ))}
+               </div>
+             </div>
            </div>
          </div>
        </div>

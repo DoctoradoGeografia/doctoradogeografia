@@ -254,6 +254,7 @@ const Home = () => {
                       name="Dr. Castro Jorge"
                       role="Secretario"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      height="h-96"
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -263,6 +264,7 @@ const Home = () => {
                       name="Dra. María González"
                       role="Investigadora"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      height="h-96"
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -272,6 +274,7 @@ const Home = () => {
                       name="Dr. Carlos Martínez"
                       role="Director"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      height="h-96"
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -281,6 +284,7 @@ const Home = () => {
                       name="Dr. Juan Pérez"
                       role="Coordinador"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      height="h-96"
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -290,6 +294,7 @@ const Home = () => {
                       name="Dr. Luis Fernández"
                       role="Profesor"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      height="h-96"
                     />
                   </div>
                 </div>

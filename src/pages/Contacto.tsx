@@ -94,6 +94,7 @@ const Contacto = () => {
                       name="Dr. Luis Fernández"
                       role="Profesor"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      height ="400px"
                     />
                   </div>
                 </div>
