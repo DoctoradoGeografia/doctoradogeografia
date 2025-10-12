@@ -6,9 +6,9 @@ import { router } from './router/router.tsx'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  //<StrictMode>
     <ThemeProvider>
       <RouterProvider router={router} />
     </ThemeProvider>
-  </StrictMode>,
+  //</StrictMode>,
 )

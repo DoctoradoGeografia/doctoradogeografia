@@ -14,39 +14,19 @@ const Cursos = () => {
     // Lógica de inscripción
   };
 
-  // Courses data
-  const courses2 = [
-    {
-      day: "11",
-      month: "AGO",
-      title: "Metodología de la investigación",
-      time: "10am a 12pm",
-      date: new Date(2025, 7, 11) // Agosto es mes 7 (0-indexed)
-    },
-    {
-      day: "20",
-      month: "AGO",
-      title: "Geografía regional y planificación territorial",
-      time: "2pm a 4pm",
-      date: new Date(2025, 7, 20)
-    },
-    {
-      day: "03",
-      month: "SEP",
-      title: "Análisis de sistemas ambientales",
-      time: "10am a 12pm",
-      date: new Date(2025, 8, 3) // Septiembre es mes 8
-    }
-  ];
+  // curso numero 1
+  
 
   // Find closest course
-  const now = new Date();
-  const futureCourses = courses2.filter(course => course.date >= now);
-  const closestCourse = futureCourses.length > 0 
-    ? futureCourses.reduce((closest, current) => 
-        current.date < closest.date ? current : closest
-      )
-    : cursos[0]; // If no future courses, use first one
+
+  const closestCourse = () =>{
+    const curso =  cursos.length > 0 
+    ? cursos[0].id
+    : cursos[0].id;
+    return curso
+  }
+
+   // If no future courses, use first one
 
 
   return (
@@ -130,7 +110,7 @@ const Cursos = () => {
       </div>
     </section>
     {/* Courses Section */}
-      <section className="w-full py-16 bg-white">
+      <section className="w-full py-16 bg-white bg-gradient-to-b from-blue-2 via-blue-3 to-white dark:bg-gradient-to-b dark:from-purple-2 dark:via-purple-3 dark:to-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 items-start mb-12">
             {/* Left Content */}
@@ -141,7 +121,7 @@ const Cursos = () => {
             </div>
           </div>
           
-          <div className='flex flex-col lg:flex-row flex-wrap gap-8 lg:gap-0'>
+          <div className='flex flex-col lg:flex-row flex-wrap gap-8 lg:gap-0 '>
                 {/* Right Content */}
                 <div className='w-full lg:w-[400px] text-center lg:text-left'>
                   <p className="text-gray-600 text-base leading-relaxed mb-4">
@@ -162,7 +142,7 @@ const Cursos = () => {
                       title={course.titulo}
                       time={course.time}
                       date={course.date}
-                      isClosest={course === closestCourse}
+                      isClosest={course.id === closestCourse()}
                     />
                   ))}
                 </div>

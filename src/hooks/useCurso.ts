@@ -41,6 +41,8 @@ export const useCursos = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+
+  // Vamos a cambiar esta funcion para realizar un query ordenado por fecha
   useEffect(() => {
     const fetchCursos = async () => {
       try {

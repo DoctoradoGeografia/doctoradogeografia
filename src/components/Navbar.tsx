@@ -104,7 +104,7 @@ const Navbar = () => {
             </div>
 
             {/* Right Side - Social Icons and FAQ (Desktop only) */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               {/* Social Icons */}
               <SocialIcons />
 

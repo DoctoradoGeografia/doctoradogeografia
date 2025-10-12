@@ -7,6 +7,7 @@ import Cursos from "../pages/Cursos.tsx";
 import Contacto from "../pages/Contacto.tsx";
 import Login from "../pages/Login.tsx";
 import Dashboard from "../pages/Dashboard.tsx";
+import NotFound from "../pages/404.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />
+      },
+      {
+        path: "*",
+        element: <NotFound />
       }
     ]
   }
