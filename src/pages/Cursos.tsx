@@ -1,20 +1,15 @@
 import CourseCard from '../components/CourseCard';
 import CourseData from '../components/CourseData';
+import { useCursos } from '../hooks/useCurso';
+
 
 const Cursos = () => {
-  const courses = [
-    {
-      id: 1,
-      imageUrl: "https://i.imghippo.com/files/AGm3730xy.webp",
-      title: "Ipsum reading",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam elit ut massa sapien.",
-      date: "12 AGO, 2025",
-      enrolledCount: 180
-    },
-    // Agrega más cursos aquí
-  ];
+  // Usar el hook personalizado para obtener cursos
 
-  const handleInscribe = (courseId: number) => {
+  const { cursos, loading, error, formatFirebaseDate } = useCursos();
+
+  // Función para manejar la inscripción (simulada)
+  const handleInscribe = (courseId: string) => {
     console.log(`Inscribing to course ${courseId}`);
     // Lógica de inscripción
   };
@@ -51,7 +46,7 @@ const Cursos = () => {
     ? futureCourses.reduce((closest, current) => 
         current.date < closest.date ? current : closest
       )
-    : courses[0]; // If no future courses, use first one
+    : cursos[0]; // If no future courses, use first one
 
 
   return (
@@ -112,14 +107,14 @@ const Cursos = () => {
     <section className="w-full py-12 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
-          {courses.map((course) => (
+          {cursos.map((course) => (
             <CourseData
               key={course.id}
-              imageUrl={course.imageUrl}
-              title={course.title}
-              description={course.description}
-              date={course.date}
-              enrolledCount={course.enrolledCount}
+              imageUrl={course.imagen}
+              title={course.titulo}
+              description={course.cuerpo}
+              date={formatFirebaseDate(course.fecha).dia + " " + formatFirebaseDate(course.fecha).mes + ", " + formatFirebaseDate(course.fecha).año}
+              enrolledCount={course.inscriptos}
               onInscribe={() => handleInscribe(course.id)}
             />
           ))}
@@ -159,12 +154,12 @@ const Cursos = () => {
                 
                 {/* Courses Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-24 w-full lg:w-[600px] justify-items-center lg:justify-items-start">
-                  {courses2.map((course, index) => (
+                  {cursos.map((course, index) => (
                     <CourseCard
                       key={index}
-                      day={course.day}
-                      month={course.month}
-                      title={course.title}
+                      day={formatFirebaseDate(course.fecha).dia}
+                      month={formatFirebaseDate(course.fecha).mes}
+                      title={course.titulo}
                       time={course.time}
                       date={course.date}
                       isClosest={course === closestCourse}

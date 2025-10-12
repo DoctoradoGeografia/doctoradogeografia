@@ -4,10 +4,10 @@ interface ArticleCardProps {
   title: string;
   author: string;
   authorImage: string;
-  date: string;
+  date: any;
 }
 
-const ArticleCard = ({ image, category, title, author, authorImage, date }: ArticleCardProps) => {
+const ArticleCard = ({ image, category, title, author, authorImage, date="any" }: ArticleCardProps) => {
   return (
     <div className="group cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
       {/* Image */}

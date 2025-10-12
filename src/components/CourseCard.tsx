@@ -1,5 +1,5 @@
 interface CourseCardProps {
-  day: string;
+  day: number;
   month: string;
   title: string;
   time: string;
