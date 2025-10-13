@@ -2,11 +2,14 @@ import StatsCard from '../components/StatsCard';
 import ArticleCard from '../components/ArticleCard';
 import FeaturedArticleCard from '../components/FeaturedArticleCard';
 import TestimonialCard from '../components/TestimonialCard';
-import CourseCard from '../components/CourseCard';
+import { useCursos } from '../hooks/useCurso';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import NextCourses from '../components/Courses/NextCourses';
 
 const Home = () => {
+
+  const { cursos, loading, error, formatFirebaseDate } = useCursos();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -23,39 +26,6 @@ const Home = () => {
     }
   };
 
-  // Courses data
-  const courses = [
-    {
-      day: "11",
-      month: "AGO",
-      title: "Metodología de la investigación",
-      time: "10am a 12pm",
-      date: new Date(2025, 7, 11) // Agosto es mes 7 (0-indexed)
-    },
-    {
-      day: "20",
-      month: "AGO",
-      title: "Geografía regional y planificación territorial",
-      time: "2pm a 4pm",
-      date: new Date(2025, 7, 20)
-    },
-    {
-      day: "03",
-      month: "SEP",
-      title: "Análisis de sistemas ambientales",
-      time: "10am a 12pm",
-      date: new Date(2025, 8, 3) // Septiembre es mes 8
-    }
-  ];
-
-  // Find closest course
-  const now = new Date();
-  const futureCourses = courses.filter(course => course.date >= now);
-  const closestCourse = futureCourses.length > 0 
-    ? futureCourses.reduce((closest, current) => 
-        current.date < closest.date ? current : closest
-      )
-    : courses[0]; // If no future courses, use first one
 
   return (
     <div className="w-full">
@@ -336,47 +306,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Courses Section */}
-      <section className="w-full py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-6 items-start mb-12">
-            {/* Left Content */}
-            <div className="text-center lg:text-left w-full">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 italic">
-                Próximos Cursos
-              </h2>
-            </div>
-          </div>
-          
-          <div className='flex flex-col lg:flex-row flex-wrap gap-8 lg:gap-0'>
-                {/* Right Content */}
-                <div className='w-full lg:w-[400px] text-center lg:text-left'>
-                  <p className="text-gray-600 text-base leading-relaxed mb-4">
-                    "Marca tu calendario y preparate para el próximo desafio académico
-                  </p>
-                  <button className=" text-blue-9 dark:text-purple-9 font-semibold text-sm hover:underline uppercase tracking-wide">
-                    VER TODOS
-                  </button>
-                </div>
-                
-                {/* Courses Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-24 w-full lg:w-[600px] justify-items-center lg:justify-items-start">
-                  {courses.map((course, index) => (
-                    <CourseCard
-                      key={index}
-                      day={course.day}
-                      month={course.month}
-                      title={course.title}
-                      time={course.time}
-                      date={course.date}
-                      isClosest={course === closestCourse}
-                    />
-                  ))}
-                </div>
-            </div>
-          
-        </div>
-      </section>
+      <NextCourses cursos={cursos} formatFirebaseDate={formatFirebaseDate} />
     </div>
   );
 };

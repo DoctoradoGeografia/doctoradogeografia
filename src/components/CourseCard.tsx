@@ -2,7 +2,6 @@ interface CourseCardProps {
   day: number;
   month: string;
   title: string;
-
   isClosest?: boolean;
 }
 
