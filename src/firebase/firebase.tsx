@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_API_KEY,
@@ -20,5 +20,7 @@ const db = getFirestore(app);
 
 // Log para validar la conexión a la base de datos
 console.log("Conexión a Firestore establecida:", db);
+
+export const auth = getAuth(app);
 
 export default db;

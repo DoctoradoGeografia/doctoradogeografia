@@ -8,6 +8,7 @@ import Contacto from "../pages/Contacto.tsx";
 import Login from "../pages/Login.tsx";
 import Dashboard from "../pages/Dashboard.tsx";
 import NotFound from "../pages/404.tsx";
+import ProtectedRoute from "../components/ProtectedRoute.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        )
       },
       {
         path: "*",

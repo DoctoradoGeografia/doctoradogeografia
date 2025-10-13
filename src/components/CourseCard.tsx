@@ -2,12 +2,11 @@ interface CourseCardProps {
   day: number;
   month: string;
   title: string;
-  time: string;
-  date: Date;
+
   isClosest?: boolean;
 }
 
-const CourseCard = ({ day, month, title, time, isClosest = false }: CourseCardProps) => {
+const CourseCard = ({ day, month, title, isClosest = false }: CourseCardProps) => {
   const isDark = isClosest;
   
   return (
@@ -36,11 +35,6 @@ const CourseCard = ({ day, month, title, time, isClosest = false }: CourseCardPr
           }`}>
             {title}
           </h4>
-          <p className={`text-sm ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            {time}
-          </p>
           {/* Link */}
           <button className="text-sm font-medium mt-auto dark:text-purple-9 text-blue-9" >
             Ver más...

@@ -2,12 +2,28 @@ import { Link } from 'react-router-dom';
 import SocialIcons from './SocialIcons';
 import { useState } from 'react';
 
+import { useAuth } from '../context/AuthContext';
+import { logout } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
+import { isAuthorizedUser } from '../services/AuthorizedUser';
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
+
+    // Verificar si el usuario está autorizado
+  const isAdmin = user && isAuthorizedUser(user.email);
 
   return (
     <nav className="bg-white shadow-sm">
@@ -39,13 +55,41 @@ const Navbar = () => {
             </div>
 
             {/* Login Button */}
-            <div>
+            <div className="flex items-center gap-4">
+              {user ? (
+          <>
+            {/* Mostrar botón de Dashboard solo si es admin */}
+                  {isAdmin && (
+            <Link 
+              to="/dashboard" 
+              className="text- hover:text-blue-9 dark:hover:text-purple-9 font-medium"
+            >
+              Dashboard
+            </Link>
+                  )}
+            <button
+              onClick={handleLogout}
+              className="bg-white text-text hover:text-white hover:bg-blue-9 dark:hover:bg-purple-9 dark:hover:text-white px-3 sm:px-4 py-1 rounded text-xs sm:text-sm transition-colors"
+            >
+              Cerrar Sesión
+            </button>
+            {user.photoURL && (
+              <img 
+                src={user.photoURL} 
+                alt={user.displayName || 'Usuario'} 
+                className="w-8 h-8 rounded-full border-2 border-blue-9 dark:border-purple-9"
+                referrerPolicy="no-referrer"
+              />
+            )}
+          </>
+        ) : (
               <Link
                 to="/login"
                 className="bg-white text-text hover:text-white hover:bg-blue-9 dark:hover:bg-purple-9 dark:hover:text-white px-3 sm:px-4 py-1 rounded text-xs sm:text-sm transition-colors"
               >
                 Iniciar Sesión
               </Link>
+              )}
             </div>
           </div>
         </div>
