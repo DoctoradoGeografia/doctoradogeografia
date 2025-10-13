@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CourseCard from "./CourseCard";
 
 interface NextCoursesProps {
@@ -38,9 +39,11 @@ const NextCourses = ({ cursos, formatFirebaseDate }: NextCoursesProps) => {
                   <p className="text-gray-600 text-base leading-relaxed mb-4">
                     "Marca tu calendario y preparate para el próximo desafio académico
                   </p>
+                  <Link to="/cursos">
                   <button className=" text-blue-9 dark:text-purple-9 font-semibold text-sm hover:underline uppercase tracking-wide">
                     VER TODOS
                   </button>
+                  </Link>
                 </div>
                 
                 {/* Courses Grid */}

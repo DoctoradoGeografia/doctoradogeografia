@@ -31,6 +31,7 @@ const Cursos = () => {
           {cursos.map((course) => (
             <CourseData
               key={course.id}
+              id={course.id}
               imageUrl={course.imagen}
               title={course.titulo}
               description={course.cuerpo}

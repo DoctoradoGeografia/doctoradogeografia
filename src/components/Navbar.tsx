@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import SocialIcons from './SocialIcons';
 import { useState } from 'react';
-
+import { NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { logout } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
@@ -20,6 +20,15 @@ const Navbar = () => {
   const handleLogout = async () => {
     await logout();
     navigate('/');
+  };
+
+    // Función para estilos de NavLink activo
+  const getNavLinkClass = ({ isActive }: { isActive: boolean }) => {
+    return `text-text hover:text-blue-9 dark:hover:text-purple-9 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+      isActive 
+        ? 'text-blue-9 dark:text-purple-9 font-bold border-b-2 border-blue-9 dark:border-purple-9' 
+        : ''
+    }`;
   };
 
     // Verificar si el usuario está autorizado
@@ -121,30 +130,21 @@ const Navbar = () => {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex space-x-8 ">
-              <Link
-                to="/doctorado"
-                className="text-text hover:text-blue-9 dark:hover:text-purple-9 transition-colors font-medium"
-              >
+              <NavLink to="/" end className={getNavLinkClass}>
+                Inicio
+              </NavLink>
+              <NavLink to="/doctorado" className={getNavLinkClass}>
                 Doctorado
-              </Link>
-              <Link
-                to="/noticias"
-                className="text-text hover:text-blue-9 dark:hover:text-purple-9 transition-colors font-medium"
-              >
+              </NavLink>
+              <NavLink to="/noticias" className={getNavLinkClass}>
                 Noticias
-              </Link>
-              <Link
-                to="/cursos"
-                className="text-text hover:text-blue-9 dark:hover:text-purple-9 transition-colors font-medium"
-              >
+              </NavLink>
+              <NavLink to="/cursos" className={getNavLinkClass}>
                 Cursos
-              </Link>
-              <Link
-                to="/contacto"
-                className="text-text hover:text-blue-9 dark:hover:text-purple-9 transition-colors font-medium"
-              >
+              </NavLink>
+              <NavLink to="/contacto" className={getNavLinkClass}>
                 Contacto
-              </Link>
+              </NavLink>
             </div>
 
             {/* Right Side - Social Icons and FAQ (Desktop only) */}

@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 interface CourseDataProps {
-  id?: string; // ID opcional para el enlace
   imageUrl: string;
   title: string;
   description: string;
@@ -12,7 +10,6 @@ interface CourseDataProps {
 }
 
 const CourseData: React.FC<CourseDataProps> = ({
-  id,
   imageUrl,
   title,
   description,
@@ -20,26 +17,15 @@ const CourseData: React.FC<CourseDataProps> = ({
   enrolledCount,
   onInscribe
 }) => {
-  
   return (
     <div className="max-w-sm bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300">
       {/* Image Section */}
       <div className="relative">
-        {id ? (
-          <Link to={`/cursos/${id}`} className="block">
-            <img 
-              src={imageUrl} 
-              alt={title}
-              className="w-full h-48 object-cover hover:opacity-90 transition-opacity cursor-pointer"
-            />
-          </Link>
-        ) : (
-          <img 
-            src={imageUrl} 
-            alt={title}
-            className="w-full h-48 object-cover"
-          />
-        )}
+        <img 
+          src={imageUrl} 
+          alt={title}
+          className="w-full h-48 object-cover"
+        />
         {/* Enrolled Badge */}
         <div className="absolute bottom-3 left-3 bg-white rounded-full px-3 py-1 flex items-center gap-2 shadow-md">
           <div className="flex -space-x-2">
@@ -58,7 +44,7 @@ const CourseData: React.FC<CourseDataProps> = ({
         <h3 className="text-lg font-bold text-text mb-2">
           {title}
         </h3>
-        <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2">
+        <p className="text-sm text-gray-600 leading-relaxed mb-4">
           {description}
         </p>
 
@@ -95,9 +81,6 @@ const CourseData: React.FC<CourseDataProps> = ({
       </div>
     </div>
   );
-
- // Si tiene ID, envuelve en Link, sino devuelve el contenido directo
-
 };
 
 export default CourseData;
