@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ArticleCard from '../components/ArticleCard.tsx';
+import ArticleCard from '../components/Home/ArticleCard.tsx';
 import SubscribeSection from '../components/SubscribeSection';
 import { useNoticias } from '../hooks/useNoticias';
 

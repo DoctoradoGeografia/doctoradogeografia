@@ -1,11 +1,13 @@
-import StatsCard from '../components/StatsCard';
-import ArticleCard from '../components/ArticleCard';
-import FeaturedArticleCard from '../components/FeaturedArticleCard';
+
+import ArticleCard from '../components/Home/ArticleCard';
+import FeaturedArticleCard from '../components/Home/FeaturedArticleCard';
 import TestimonialCard from '../components/TestimonialCard';
 import { useCursos } from '../hooks/useCurso';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import NextCourses from '../components/Courses/NextCourses';
+import StatsSection from '../components/Home/StatsSection';
+import ArticleSection from '../components/Home/ArticleSection';
 
 const Home = () => {
 
@@ -99,95 +101,11 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Cards Section */}
-      <section className="w-full py-12 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <StatsCard
-              value="15"
-              label="AÑOS DE EXPERIENCIA"
-              textColor="text-background"
-              valueColor="text-blue-9 dark:text-purple-9"
-              image="https://i.imghippo.com/files/Bod3628ch.jpg"
-              
-            />
-            
-            <StatsCard
-              value="Más de 1000"
-              label="CURSOS BRINDADOS"
-              bgColor="bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900"
-              textColor="text-background"
-              valueColor="text-background"
-              showPlusIcon={true}
-            />
-            
-            <StatsCard
-              value="22"
-              label="Especialidades disponibles"
-              textColor="text-background"
-              valueColor="text-blue-9 dark:text-purple-9"
-              image='https://i.imghippo.com/files/kjk1668jw.webp'
-            />
-          </div>
-        </div>
-      </section>
+      <StatsSection></StatsSection>
+       
+       {/* Articles Section */}
+      <ArticleSection></ArticleSection>
 
-    {/* Articles Section */}
-      <section className="w-full py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-left">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Artículos que se renuevan
-            </h2>
-            <p className="text-gray-600">
-              Ver todo los artículos de la geografía nacional e internacional
-            </p>
-          </div>
-          
-          <div className="space-y-8">
-            {/* Featured Article - Hidden on mobile */}
-            <div className='hidden md:block'>
-              <FeaturedArticleCard
-                image="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop"
-                category="Category"
-                title="Lorem ipsum dolor sit ."
-                description="Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien."
-                author="MATIAS, ALVARADO"
-                authorImage="https://i.pravatar.cc/150?img=1"
-                date="12 AGO, 2025"
-              />
-            </div>
-            
-            {/* Article Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <ArticleCard
-                image="https://i.imghippo.com/files/YcG2905iHw.png"
-                category="Ipsum reading"
-                title="Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam."
-                author="MATIAS, ALVARADO"
-                authorImage="https://i.pravatar.cc/150?img=1"
-                date="12 AGO, 2025"
-              />
-              <ArticleCard
-                image="https://i.imghippo.com/files/kjk1668jw.webp"
-                category="Ipsum reading"
-                title="Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam."
-                author="MARIA, GONZALEZ"
-                authorImage="https://i.pravatar.cc/150?img=2"
-                date="15 JUL, 2025"
-              />
-              <ArticleCard
-                image="https://i.imghippo.com/files/Bod3628ch.jpg"
-                category="Ipsum reading"
-                title="Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam."
-                author="CARLOS, MARTINEZ"
-                authorImage="https://i.pravatar.cc/150?img=3"
-                date="20 JUN, 2025"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Trust Section */}
       <section className="w-full py-16 bg-gray-50">

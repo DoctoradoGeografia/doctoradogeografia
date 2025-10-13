@@ -1,4 +1,4 @@
-import CourseCard from "../CourseCard";
+import CourseCard from "./CourseCard";
 
 interface NextCoursesProps {
   cursos: { id: string; fecha: any; titulo: string;  }[];
