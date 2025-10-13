@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
+
 interface ArticleCardProps {
+  id?: string;
   image: string;
   category: string;
   title: string;
@@ -7,8 +10,8 @@ interface ArticleCardProps {
   date: any;
 }
 
-const ArticleCard = ({ image, category, title, author, authorImage, date="any" }: ArticleCardProps) => {
-  return (
+const ArticleCard = ({ id, image, category, title, author, authorImage, date="any" }: ArticleCardProps) => {
+  const content = (
     <div className="group cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
       {/* Image */}
       <div className="h-48 overflow-hidden">
@@ -39,6 +42,7 @@ const ArticleCard = ({ image, category, title, author, authorImage, date="any" }
               src={authorImage} 
               alt={author}
               className="w-8 h-8 rounded-full object-cover"
+              referrerPolicy="no-referrer"
             />
             <span className="text-gray-600 font-medium">{author}</span>
           </div>
@@ -54,6 +58,13 @@ const ArticleCard = ({ image, category, title, author, authorImage, date="any" }
       </div>
     </div>
   );
+
+  // Si tiene ID, envuelve en Link, sino devuelve el contenido directo
+  if (id) {
+    return <Link to={`/noticias/${id}`}>{content}</Link>;
+  }
+
+  return content;
 };
 
 export default ArticleCard;

@@ -28,7 +28,8 @@ return (
             <div className='hidden md:block'>
             {noticias.length > 0 ? (
               <FeaturedArticleCard
-                      //key={noticia.id}
+                      key={noticia.id}
+                      id={noticia.id}
                       description={noticia.subtitulo}
                       image={noticia.imagencentral}
                       category={noticia.categoria}
@@ -49,6 +50,7 @@ return (
                   noticias.map((noticia) => (
                     <ArticleCard
                       key={noticia.id}
+                      id={noticia.id}
                       image={noticia.imagencentral}
                       category={noticia.categoria}
                       title={noticia.titulo}

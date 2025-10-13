@@ -48,6 +48,7 @@ const NextCourses = ({ cursos, formatFirebaseDate }: NextCoursesProps) => {
                   {cursos.map((course, index) => (
                     <CourseCard
                       key={index}
+                      id={course.id}
                       day={formatFirebaseDate(course.fecha).dia}
                       month={formatFirebaseDate(course.fecha).mes}
                       title={course.titulo}
