@@ -1,9 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import TestimonialCard from "../components/TestimonialCard";
 import ContactSection from "../components/ContactSection";
+import { sendContactEmail } from "../services/sendContactEmail";
 
 const Contacto = () => {
   
+  
+  //function for carousel
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
