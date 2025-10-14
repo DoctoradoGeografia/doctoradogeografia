@@ -12,9 +12,10 @@ interface ArticleCardProps {
 
 const ArticleCard = ({ id, image, category, title, author, authorImage, date="any" }: ArticleCardProps) => {
   const content = (
-    <div className="group cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+    //<div className="group cursor-pointer bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="rounded-xl shadow-xl p-4 border-2 bg-white border-gray-200 hover:shadow-lg transition-shadow duration-300">
       {/* Image */}
-      <div className="h-48 overflow-hidden">
+      <div className="h-48 overflow-hidden rounded-md">
         <img 
           src={image} 
           alt={title}

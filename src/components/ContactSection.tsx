@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { sendContactEmail } from '../services/sendContactEmail';
+import Toast from './Toast';
 
 const ContactSection = () => {
 
@@ -38,7 +39,32 @@ const ContactSection = () => {
     setLoading(false);
   };
 
+
+  // Close toast after showing message
+  const handleCloseToast = () => {
+    setStatus('idle');
+  };
+
+
   return (
+      <>
+      
+      {/* Toast Notification */}
+      {status === 'success' && (
+        <Toast
+          type="success"
+          message="Tu mensaje ha sido enviado correctamente. Te contactaremos pronto."
+          onClose={handleCloseToast}
+        />
+      )}
+      {status === 'error' && (
+        <Toast
+          type="error"
+          message="Hubo un error al enviar tu mensaje. Por favor, intenta nuevamente."
+          onClose={handleCloseToast}
+        />
+      )}
+      
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Left Side - Contact Form */}
@@ -153,7 +179,7 @@ const ContactSection = () => {
               Hablemos: tu consulta es importante
             </h2>
             <p className="text-gray-600 mb-8">
-              Need something cleared up? Here are our most frequently asked questions.
+              ¿Necesitás aclarar algo? Aquí están nuestras preguntas más frecuentes.
             </p>
           </div>
 
@@ -166,9 +192,9 @@ const ContactSection = () => {
             </div>
             <div>
               <h3 className="font-bold text-gray-900 mb-2">Correo</h3>
-              <p className="text-gray-600 text-sm mb-2">Our friendly team is here to help.</p>
+              <p className="text-gray-600 text-sm mb-2">Nuestro equipo está aquí para ayudar.</p>
               <a href="mailto:Doctorado@gmail.com" className="text-gray-900 font-medium hover:underline">
-                Doctorado@gmail.com
+                geografiadoctorado@gmail.com
               </a>
             </div>
           </div>
@@ -220,6 +246,7 @@ const ContactSection = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

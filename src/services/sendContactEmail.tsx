@@ -17,11 +17,12 @@ export const sendContactEmail = async (formData: {
       SERVICE_ID,
       TEMPLATE_ID,
       {
-        from_name: formData.nombre,
-        from_lastname: formData.lastname,
-        from_email: formData.email,
+        name: formData.nombre,
+        lastname: formData.lastname,
+        phone: formData.phone,
+        email: formData.email,
         message: formData.message,
-        to_email: 'doctorado@geografia.unsj.edu.ar', // Email destino
+        to_email: 'geografiadoctorado@gmail.com', // Email destino
       },
       PUBLIC_KEY
     );
