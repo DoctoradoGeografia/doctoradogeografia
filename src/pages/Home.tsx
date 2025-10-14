@@ -10,7 +10,7 @@ import TrustSection from '../components/Home/TrustSection';
 
 const Home = () => {
 
-  const { cursos, loading, error, formatFirebaseDate } = useCursos();
+  const { cursos, formatFirebaseDate } = useCursos();
 
   return (
     <div className="w-full">
