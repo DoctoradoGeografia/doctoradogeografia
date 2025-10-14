@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar.tsx';
 import Footer from './components/Footer.tsx';
-import ThemeToggle from './components/ThemeToggle.tsx';
+import ThemeToggle from './components/UI/ThemeToggle.tsx';
 import ScrollToTop from './components/ScrollToTop.tsx';
 
 function App() {

@@ -1,5 +1,5 @@
-const API_KEY = import.meta.env.VITE_IMGHIPPO_API_KEY || '';
-const UPLOAD_URL = import.meta.env.VITE_UPLOAD_URL || 'https://api.imghippo.com/v1/upload';
+const API_KEY = import.meta.env.VITE_IMGHIPPO_API_KEY ;
+const UPLOAD_URL = import.meta.env.VITE_UPLOAD_URL ;
 
 interface UploadResponse {
   success: boolean;

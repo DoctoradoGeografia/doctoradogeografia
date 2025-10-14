@@ -1,5 +1,5 @@
-import FeatureCard from '../components/FeatureCard';
-import AuthorityCard from '../components/AuthorityCard';
+import FeatureCard from '../components/Doctorado/FeatureCard';
+import AuthorityCard from '../components/Doctorado/AuthorityCard';
 import { useRef, useState } from 'react';
 import BannerDoctorado from '../components/Doctorado/BannerDoctorado';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { sendContactEmail } from '../services/sendContactEmail';
-import Toast from './Toast';
+import Toast from './UI/Toast';
 
 const ContactSection = () => {
 
