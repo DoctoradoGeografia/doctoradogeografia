@@ -90,7 +90,7 @@ const Noticia = () => {
         <meta property="og:description" content={noticia.subtitulo || noticia.cuerpo.substring(0, 200)} />
         <meta property="og:image" content={noticia.imagencentral} />
         <meta property="og:url" content={`https://doctorado-geografia.unsj.edu.ar/noticias/${id}`} />
-        <meta property="article:published_time" content={noticia.fecha.toISOString()} />
+        <meta property="article:published_time" content={formatFirebaseDate(noticia.fecha)} />
         <meta property="article:author" content={noticia.autor} />
         <meta property="article:section" content={noticia.categoria} />
         

@@ -8,6 +8,7 @@ import Contacto from "../pages/Contacto.tsx";
 import Login from "../pages/Login.tsx";
 import Dashboard from "../pages/Dashboard.tsx";
 import NotFound from "../pages/404.tsx";
+import ErrorPage from "../pages/ErrorPage.tsx";
 import ProtectedRoute from "../components/ProtectedRoute.tsx";
 import Noticia from "../components/Noticias/Noticia.tsx";
 import CursoDetalle from "../components/Courses/CursoDetalle.tsx";
@@ -16,30 +17,37 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
+        errorElement: <ErrorPage />
       },
       {
         path: "/doctorado",
-        element: <Doctorado />
+        element: <Doctorado />,
+        errorElement: <ErrorPage />
       },
       {
         path: "/noticias",
-        element: <Noticias />
+        element: <Noticias />,
+        errorElement: <ErrorPage />
       },
       {
         path: "/cursos",
-        element: <Cursos />
+        element: <Cursos />,
+        errorElement: <ErrorPage />
       },
       {
         path: "/contacto",
-        element: <Contacto />
+        element: <Contacto />,
+        errorElement: <ErrorPage />
       },
       {
         path: "/login",
-        element: <Login />
+        element: <Login />,
+        errorElement: <ErrorPage />
       },
       {
         path: "/dashboard",
@@ -47,15 +55,18 @@ export const router = createBrowserRouter([
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
-        )
+        ),
+        errorElement: <ErrorPage />
       },
       {
         path: "/noticias/:id",
-        element: <Noticia />
+        element: <Noticia />,
+        errorElement: <ErrorPage />
       },
       {
         path: "/cursos/:id",
-        element: <CursoDetalle />
+        element: <CursoDetalle />,
+        errorElement: <ErrorPage />
       },
       {
         path: "*",
