@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
@@ -78,6 +79,30 @@ const CursoDetalle = () => {
 
   return (
     <div className="min-h-screen bg-background dark:bg-gray-900">
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>{curso.titulo} - Cursos | Doctorado en Geografía UNSJ</title>
+        <meta name="description" content={curso.subtitulo || curso.cuerpo.substring(0, 160)} />
+        <meta name="keywords" content={`${curso.categoria}, cursos geografía, UNSJ, San Juan, Argentina`} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={curso.titulo} />
+        <meta property="og:description" content={curso.subtitulo || curso.cuerpo.substring(0, 200)} />
+        <meta property="og:image" content={curso.imagen} />
+        <meta property="og:url" content={`https://doctorado-geografia.unsj.edu.ar/cursos/${id}`} />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={curso.titulo} />
+        <meta property="twitter:description" content={curso.subtitulo || curso.cuerpo.substring(0, 200)} />
+        <meta property="twitter:image" content={curso.imagen} />
+        <meta property="twitter:url" content={`https://doctorado-geografia.unsj.edu.ar/cursos/${id}`} />
+        
+        {/* Canonical */}
+        <link rel="canonical" href={`https://doctorado-geografia.unsj.edu.ar/cursos/${id}`} />
+      </Helmet>
+
       {/* Breadcrumb */}
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

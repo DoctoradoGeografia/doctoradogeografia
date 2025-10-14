@@ -1,4 +1,4 @@
-
+import { Helmet } from 'react-helmet-async';
 import CourseData from '../components/Courses/CourseData';
 import { useCursos } from '../hooks/useCurso';
 import NextCourses from '../components/Courses/NextCourses';
@@ -18,6 +18,30 @@ const Cursos = () => {
 
   return (
     <>
+    <Helmet>
+      {/* Basic Meta Tags */}
+      <title>Cursos y Materias - Doctorado en Geografía UNSJ</title>
+      <meta name="description" content="Explora los cursos, seminarios y materias ofrecidas en el Doctorado en Geografía de la UNSJ. Información sobre contenidos, fechas e inscripciones." />
+      <meta name="keywords" content="cursos geografía, seminarios, materias doctorado, UNSJ, inscripciones, San Juan, Argentina" />
+      
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://doctorado-geografia.unsj.edu.ar/cursos" />
+      <meta property="og:title" content="Cursos - Doctorado en Geografía UNSJ" />
+      <meta property="og:description" content="Cursos y seminarios del Doctorado en Geografía de la UNSJ" />
+      <meta property="og:image" content="https://doctorado-geografia.unsj.edu.ar/og-image.jpg" />
+      
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://doctorado-geografia.unsj.edu.ar/cursos" />
+      <meta property="twitter:title" content="Cursos - Doctorado en Geografía UNSJ" />
+      <meta property="twitter:description" content="Cursos y seminarios del Doctorado en Geografía de la UNSJ" />
+      <meta property="twitter:image" content="https://doctorado-geografia.unsj.edu.ar/og-image.jpg" />
+      
+      {/* Canonical */}
+      <link rel="canonical" href="https://doctorado-geografia.unsj.edu.ar/cursos" />
+    </Helmet>
+    
     {/*Banner Hero courses */}
     <BannerCourses />
 

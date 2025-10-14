@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import FeatureCard from '../components/Doctorado/FeatureCard';
 import AuthorityCard from '../components/Doctorado/AuthorityCard';
 import { useRef, useState } from 'react';
@@ -75,6 +76,29 @@ const Doctorado = () => {
 
   return (
    <>
+    <Helmet>
+      {/* Basic Meta Tags */}
+      <title>Sobre el Doctorado - Doctorado en Geografía UNSJ</title>
+      <meta name="description" content="Conoce nuestro programa de Doctorado en Geografía: requisitos de admisión, plan de estudios, autoridades y ventajas de estudiar en la UNSJ." />
+      <meta name="keywords" content="doctorado geografía, plan de estudios, UNSJ, requisitos admisión, autoridades, San Juan, Argentina" />
+      
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://doctorado-geografia.unsj.edu.ar/doctorado" />
+      <meta property="og:title" content="Sobre el Doctorado - Geografía UNSJ" />
+      <meta property="og:description" content="Programa de Doctorado en Geografía de la Universidad Nacional de San Juan" />
+      <meta property="og:image" content="https://doctorado-geografia.unsj.edu.ar/og-image.jpg" />
+      
+      {/* Twitter */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://doctorado-geografia.unsj.edu.ar/doctorado" />
+      <meta property="twitter:title" content="Sobre el Doctorado - Geografía UNSJ" />
+      <meta property="twitter:description" content="Programa de Doctorado en Geografía de la Universidad Nacional de San Juan" />
+      <meta property="twitter:image" content="https://doctorado-geografia.unsj.edu.ar/og-image.jpg" />
+      
+      {/* Canonical */}
+      <link rel="canonical" href="https://doctorado-geografia.unsj.edu.ar/doctorado" />
+    </Helmet>
 
     {/* Hero Banner */}
     <BannerDoctorado />
