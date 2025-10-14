@@ -1,13 +1,11 @@
 interface AuthorityCardProps {
   image: string;
   name: string;
-  position: string;
-  description: string;
   isActive: boolean;
   onClick: () => void;
 }
 
-const AuthorityCard = ({ image, name, position, description, isActive, onClick }: AuthorityCardProps) => {
+const AuthorityCard = ({ image, name, isActive, onClick }: AuthorityCardProps) => {
   if (isActive) {
     return null; // El card activo se renderiza de forma diferente en la página
   }

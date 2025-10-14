@@ -392,8 +392,6 @@ const Doctorado = () => {
                      <AuthorityCard
                        image={authority.image}
                        name={authority.name}
-                       position={authority.position}
-                       description={authority.description}
                        isActive={false}
                        onClick={() => setActiveAuthority(index)}
                      />

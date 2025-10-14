@@ -8,7 +8,7 @@ import BannerCourses from '../components/Courses/BannerCourses';
 const Cursos = () => {
   // Usar el hook personalizado para obtener cursos
 
-  const { cursos, loading, error, formatFirebaseDate } = useCursos();
+  const { cursos, formatFirebaseDate } = useCursos();
 
   // Función para manejar la inscripción (simulada)
   const handleInscribe = (courseId: string) => {

@@ -84,7 +84,7 @@ const Contacto = () => {
                       quote="Lorem ipsum dolor sit amet consectetur adipiscing elit."
                       name="Dr. Castro Jorge"
                       role="Secretario"
-                      logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -93,7 +93,7 @@ const Contacto = () => {
                       quote="Lorem ipsum dolor sit amet consectetur adipiscing elit."
                       name="Dra. María González"
                       role="Investigadora"
-                      logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -102,7 +102,7 @@ const Contacto = () => {
                       quote="Lorem ipsum dolor sit amet consectetur adipiscing elit."
                       name="Dr. Carlos Martínez"
                       role="Director"
-                      logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -111,7 +111,6 @@ const Contacto = () => {
                       quote="Lorem ipsum dolor sit amet consectetur adipiscing elit."
                       name="Dr. Juan Pérez"
                       role="Coordinador"
-                      logo="https://i.imghippo.com/files/lod9197EmM.png"
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -120,7 +119,6 @@ const Contacto = () => {
                       quote="Lorem ipsum dolor sit amet consectetur adipiscing elit."
                       name="Dr. Luis Fernández"
                       role="Profesor"
-                      logo="https://i.imghippo.com/files/lod9197EmM.png"
                     />
                   </div>
                 </div>

@@ -3,10 +3,9 @@ interface TestimonialCardProps {
   quote: string;
   name: string;
   role: string;
-  logo: string;
 }
 
-const TestimonialCard = ({ image, quote="", name, role="", logo="",}: TestimonialCardProps) => {
+const TestimonialCard = ({ image, quote="", name, role=""}: TestimonialCardProps) => {
   return (
     <div className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer h-[400px]">
       {/* Background Image */}
