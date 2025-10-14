@@ -1,5 +1,5 @@
 
-import CourseData from '../components/CourseData';
+import CourseData from '../components/Courses/CourseData';
 import { useCursos } from '../hooks/useCurso';
 import NextCourses from '../components/Courses/NextCourses';
 
@@ -16,13 +16,10 @@ const Cursos = () => {
     // Lógica de inscripción
   };
 
-
-
   return (
     <>
     {/*Banner Hero courses */}
     <BannerCourses />
-    
 
     {/* Courses Grid Section */}
     <section className="w-full py-12 bg-background">
