@@ -1,4 +1,4 @@
-
+import { Helmet } from 'react-helmet-async';
 import ArticleCard from '../components/Home/ArticleCard.tsx';
 import BannerNoticias from '../components/Noticias/BannerNoticias.tsx';
 import SubscribeSection from '../components/SubscribeSection';
@@ -11,6 +11,30 @@ const Noticias = () => {
   
   return (
     <div className="w-full">
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>Noticias y Novedades - Doctorado en Geografía UNSJ</title>
+        <meta name="description" content="Últimas noticias, eventos y novedades del Doctorado en Geografía de la UNSJ. Mantente informado sobre investigaciones, seminarios y actividades académicas." />
+        <meta name="keywords" content="noticias geografía, eventos académicos, UNSJ, investigaciones, seminarios, San Juan, Argentina" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://doctorado-geografia.unsj.edu.ar/noticias" />
+        <meta property="og:title" content="Noticias - Doctorado en Geografía UNSJ" />
+        <meta property="og:description" content="Últimas noticias y eventos del Doctorado en Geografía de la UNSJ" />
+        <meta property="og:image" content="https://doctorado-geografia.unsj.edu.ar/og-image.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://doctorado-geografia.unsj.edu.ar/noticias" />
+        <meta property="twitter:title" content="Noticias - Doctorado en Geografía UNSJ" />
+        <meta property="twitter:description" content="Últimas noticias y eventos del Doctorado en Geografía de la UNSJ" />
+        <meta property="twitter:image" content="https://doctorado-geografia.unsj.edu.ar/og-image.jpg" />
+        
+        {/* Canonical */}
+        <link rel="canonical" href="https://doctorado-geografia.unsj.edu.ar/noticias" />
+      </Helmet>
+
       <BannerNoticias />
 
        {/* Articles Section */}

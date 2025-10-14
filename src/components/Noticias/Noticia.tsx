@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
@@ -76,6 +77,34 @@ const Noticia = () => {
 
   return (
     <div className="min-h-screen bg-background dark:bg-gray-900">
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>{noticia.titulo} - Doctorado en Geografía UNSJ</title>
+        <meta name="description" content={noticia.subtitulo || noticia.cuerpo.substring(0, 160)} />
+        <meta name="author" content={noticia.autor} />
+        <meta name="keywords" content={`${noticia.categoria}, noticias geografía, UNSJ, San Juan, Argentina`} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={noticia.titulo} />
+        <meta property="og:description" content={noticia.subtitulo || noticia.cuerpo.substring(0, 200)} />
+        <meta property="og:image" content={noticia.imagencentral} />
+        <meta property="og:url" content={`https://doctorado-geografia.unsj.edu.ar/noticias/${id}`} />
+        <meta property="article:published_time" content={noticia.fecha.toISOString()} />
+        <meta property="article:author" content={noticia.autor} />
+        <meta property="article:section" content={noticia.categoria} />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={noticia.titulo} />
+        <meta property="twitter:description" content={noticia.subtitulo || noticia.cuerpo.substring(0, 200)} />
+        <meta property="twitter:image" content={noticia.imagencentral} />
+        <meta property="twitter:url" content={`https://doctorado-geografia.unsj.edu.ar/noticias/${id}`} />
+        
+        {/* Canonical */}
+        <link rel="canonical" href={`https://doctorado-geografia.unsj.edu.ar/noticias/${id}`} />
+      </Helmet>
+
       {/* Breadcrumb */}
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { Helmet } from 'react-helmet-async';
+import { useRef } from "react";
 import TestimonialCard from "../components/TestimonialCard";
 import ContactSection from "../components/ContactSection";
-import { sendContactEmail } from "../services/sendContactEmail";
 
 const Contacto = () => {
   
@@ -25,6 +25,30 @@ const Contacto = () => {
 
   return (
     <div className="min-h-screen py-8">
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>Contacto - Doctorado en Geografía UNSJ</title>
+        <meta name="description" content="Contáctanos para resolver tus dudas sobre el Doctorado en Geografía de la UNSJ. Dirección, teléfono, email y formulario de contacto." />
+        <meta name="keywords" content="contacto, UNSJ, doctorado geografía, consultas, información, San Juan, Argentina" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://doctorado-geografia.unsj.edu.ar/contacto" />
+        <meta property="og:title" content="Contacto - Doctorado en Geografía UNSJ" />
+        <meta property="og:description" content="Contáctanos para resolver tus dudas sobre el Doctorado en Geografía" />
+        <meta property="og:image" content="https://doctorado-geografia.unsj.edu.ar/og-image.jpg" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://doctorado-geografia.unsj.edu.ar/contacto" />
+        <meta property="twitter:title" content="Contacto - Doctorado en Geografía UNSJ" />
+        <meta property="twitter:description" content="Contáctanos para resolver tus dudas sobre el Doctorado en Geografía" />
+        <meta property="twitter:image" content="https://doctorado-geografia.unsj.edu.ar/og-image.jpg" />
+        
+        {/* Canonical */}
+        <link rel="canonical" href="https://doctorado-geografia.unsj.edu.ar/contacto" />
+      </Helmet>
+
       {/* Trust Section */}
       <section className="w-full py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

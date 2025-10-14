@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import NoticiasSection from '../components/Dashboard/NoticiasSection';
 import CursosSection from '../components/Dashboard/CursosSection';
@@ -9,6 +10,12 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>Panel de Administración - Doctorado en Geografía UNSJ</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

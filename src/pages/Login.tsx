@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithGoogle } from '../services/authService';
@@ -39,6 +40,16 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-1 via-blue-2 to-white dark:from-purple-1 dark:via-purple-2 dark:to-white px-4 py-12">
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>Inicio de Sesión - Doctorado en Geografía UNSJ</title>
+        <meta name="description" content="Acceso al sistema de gestión del Doctorado en Geografía UNSJ." />
+        <meta name="robots" content="noindex, nofollow" />
+        
+        {/* Canonical */}
+        <link rel="canonical" href="https://doctorado-geografia.unsj.edu.ar/login" />
+      </Helmet>
+
       <div className="max-w-md w-full">
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-xl p-8 space-y-8">
