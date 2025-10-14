@@ -17,3 +17,18 @@
                 </div>
               </div>
             </div>
+
+
+ <div className="hidden lg:flex justify-left gap-3 flex-wrap">
+             {authorities.map((authority, index) => (
+               <AuthorityCard
+                 key={authority.id}
+                 image={authority.image}
+                 name={authority.name}
+                 position={authority.position}
+                 description={authority.description}
+                 isActive={false}
+                 onClick={() => setActiveAuthority(index)}
+               />
+             ))}
+           </div>

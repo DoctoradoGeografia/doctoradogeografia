@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 interface FeaturedArticleCardProps {
+  id?: string;
   image: string;
   category: string;
   title: string;
@@ -9,6 +12,7 @@ interface FeaturedArticleCardProps {
 }
 
 const FeaturedArticleCard = ({ 
+  id,
   image, 
   category, 
   title, 
@@ -17,7 +21,7 @@ const FeaturedArticleCard = ({
   authorImage, 
   date 
 }: FeaturedArticleCardProps) => {
-  return (
+  const content = (
     <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl group cursor-pointer">
       {/* Background Image */}
       <img 
@@ -25,6 +29,7 @@ const FeaturedArticleCard = ({
         alt={title}
         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
       />
+ 
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
@@ -56,6 +61,7 @@ const FeaturedArticleCard = ({
                 src={authorImage} 
                 alt={author}
                 className="w-10 h-10 rounded-full object-cover border-2 border-white/30"
+                referrerPolicy="no-referrer"
               />
               <span className="font-semibold text-sm uppercase tracking-wide">{author}</span>
             </div>
@@ -69,14 +75,21 @@ const FeaturedArticleCard = ({
             </div>
           </div>
           
-          {/* Read More Button */}
-          <button className="border-[1px] border-solid text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:text-blue-9 dark:hover:text-purple-9 transition-colors duration-200 uppercase tracking-wide">
+          {/* Read More Button - Solo visual, el click lo maneja el Link padre */}
+          <div className="border-[1px] border-solid text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:text-blue-9 dark:hover:text-purple-9 transition-colors duration-200 uppercase tracking-wide">
             Leer más
-          </button>
+          </div>
         </div>
       </div>
     </div>
   );
+   // Si tiene ID, envuelve en Link, sino devuelve el contenido directo
+  if (id) {
+    return <Link to={`/noticias/${id}`}>{content}</Link>;
+  }
+
+  return content;
+
 };
 
 export default FeaturedArticleCard;

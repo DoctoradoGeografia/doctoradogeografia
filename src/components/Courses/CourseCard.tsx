@@ -1,16 +1,17 @@
+import { Link } from 'react-router-dom';
+
 interface CourseCardProps {
-  day: string;
+  id?: string;
+  day: number;
   month: string;
   title: string;
-  time: string;
-  date: Date;
   isClosest?: boolean;
 }
 
-const CourseCard = ({ day, month, title, time, isClosest = false }: CourseCardProps) => {
+const CourseCard = ({ id, day, month, title, isClosest = false }: CourseCardProps) => {
   const isDark = isClosest;
   
-  return (
+  const content = (
     <div className={`rounded-xl min-h-[293px] w-[217px] p-6 shadow-sm hover:shadow-md transition-shadow duration-300 ${
       isDark ? 'bg-gray-800 text-white' : 'bg-blue-5 text-textd dark:bg-purple-5'
     }`}>
@@ -36,20 +37,22 @@ const CourseCard = ({ day, month, title, time, isClosest = false }: CourseCardPr
           }`}>
             {title}
           </h4>
-          <p className={`text-sm ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            {time}
-          </p>
           {/* Link */}
-          <button className="text-sm font-medium mt-auto dark:text-purple-9 text-blue-9" >
+          <div className="text-sm font-medium mt-auto dark:text-purple-9 text-blue-9 cursor-pointer" >
             Ver más...
-          </button>
+          </div>
         </div>
         
       </div>
     </div>
   );
+
+  // Si tiene ID, envuelve en Link, sino devuelve el contenido directo
+  if (id) {
+    return <Link to={`/cursos/${id}`}>{content}</Link>;
+  }
+
+  return content;
 };
 
 export default CourseCard;

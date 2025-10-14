@@ -1,48 +1,46 @@
-import { useRef, useState } from "react";
-import TestimonialCard from "../components/TestimonialCard";
-import ContactSection from "../components/ContactSection";
-import { sendContactEmail } from "../services/sendContactEmail";
+import { useRef } from 'react';
+import { Link } from 'react-router-dom';
+import TestimonialCard from '../TestimonialCard';
 
-const Contacto = () => {
-  
-  
-  //function for carousel
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 320; // width of card + gap
-      const newScrollLeft = direction === 'left' 
-        ? scrollContainerRef.current.scrollLeft - scrollAmount
-        : scrollContainerRef.current.scrollLeft + scrollAmount;
-      
-      scrollContainerRef.current.scrollTo({
-        left: newScrollLeft,
-        behavior: 'smooth'
-      });
-    }
-  };
+const TrustSection = () => {
 
-  return (
-    <div className="min-h-screen py-8">
-      {/* Trust Section */}
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    
+      const scroll = (direction: 'left' | 'right') => {
+        if (scrollContainerRef.current) {
+          const scrollAmount = 320; // width of card + gap
+          const newScrollLeft = direction === 'left' 
+            ? scrollContainerRef.current.scrollLeft - scrollAmount
+            : scrollContainerRef.current.scrollLeft + scrollAmount;
+          
+          scrollContainerRef.current.scrollTo({
+            left: newScrollLeft,
+            behavior: 'smooth'
+          });
+        }
+      };
+
+    return (
+        <>
+        {/* Trust Section */}
       <section className="w-full py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Badge */}
           <div className="mb-8">
             <span className="inline-block bg-blue-9 dark:bg-purple-9 text-white px-5 py-2 rounded-full text-sm font-semibold">
-              Escribinos
+              Lo que nos distingue
             </span>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-start">
             {/* Left Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-1 gap-2 items-center text-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                "Resolvamos tus inquietudes sobre el Doctorado en Geografía"
+                Confianza en más de 20 países
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                "Tu próxima pregunta, nuestra próxima respuesta"
+                Formamos profesionales junto a docentes que piensan, investigan y actúan sobre los territorios que habitamos.
               </p>
             </div>
             
@@ -61,6 +59,7 @@ const Contacto = () => {
                       name="Dr. Castro Jorge"
                       role="Secretario"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                    
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -70,6 +69,7 @@ const Contacto = () => {
                       name="Dra. María González"
                       role="Investigadora"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -79,6 +79,7 @@ const Contacto = () => {
                       name="Dr. Carlos Martínez"
                       role="Director"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -88,6 +89,7 @@ const Contacto = () => {
                       name="Dr. Juan Pérez"
                       role="Coordinador"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      
                     />
                   </div>
                   <div className="flex-shrink-0 w-[300px]">
@@ -97,6 +99,7 @@ const Contacto = () => {
                       name="Dr. Luis Fernández"
                       role="Profesor"
                       logo="https://i.imghippo.com/files/lod9197EmM.png"
+                      
                     />
                   </div>
                 </div>
@@ -128,17 +131,16 @@ const Contacto = () => {
           
           {/* Button */}
           <div className="mt-12">
-            <button className="bg-blue-4 dark:bg-purple-4 dark:text-purple-9 text-blue-9 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-blue-7  dark:hover:bg-purple-7 transition-colors duration-200">
-              Más acerca de nosotros...
-            </button>
+            <Link to="/doctorado">
+              <button className="bg-blue-4 dark:bg-purple-4 dark:text-purple-9 text-blue-9 px-6 py-3 rounded-lg font-semibold text-sm hover:bg-blue-7  dark:hover:bg-purple-7 transition-colors duration-200">
+                Más acerca de nosotros...
+              </button>
+            </Link>
           </div>
         </div>
-         
-        {/* Contact Section */}
-        <ContactSection />
       </section>
-    </div>
-  );
-};
+        </>
+    )
+}
 
-export default Contacto;
+export default TrustSection;

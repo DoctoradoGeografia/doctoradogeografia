@@ -1,12 +1,18 @@
 import { useState } from 'react';
+import { sendContactEmail } from '../services/sendContactEmail';
+import Toast from './Toast';
 
 const ContactSection = () => {
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const [formData, setFormData] = useState({
     nombre: '',
-    apellido: '',
-    correo: '',
-    telefono: '',
-    mensaje: ''
+    lastname: '',
+    email: '',
+    phone: '',
+    message: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -17,13 +23,48 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Formulario enviado:', formData);
-    // Implementar lógica de envío
+    setLoading(true);
+    
+    const result = await sendContactEmail(formData);
+    
+    if (result.success) {
+      setStatus('success');
+      setFormData({ nombre: '', lastname: '', email: '', phone: '', message: '' });
+    } else {
+      setStatus('error');
+    }
+    
+    setLoading(false);
   };
 
+
+  // Close toast after showing message
+  const handleCloseToast = () => {
+    setStatus('idle');
+  };
+
+
   return (
+      <>
+      
+      {/* Toast Notification */}
+      {status === 'success' && (
+        <Toast
+          type="success"
+          message="Tu mensaje ha sido enviado correctamente. Te contactaremos pronto."
+          onClose={handleCloseToast}
+        />
+      )}
+      {status === 'error' && (
+        <Toast
+          type="error"
+          message="Hubo un error al enviar tu mensaje. Por favor, intenta nuevamente."
+          onClose={handleCloseToast}
+        />
+      )}
+      
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Left Side - Contact Form */}
@@ -50,8 +91,8 @@ const ContactSection = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Apellido</label>
                 <input
                   type="text"
-                  name="apellido"
-                  value={formData.apellido}
+                  name="lastname"
+                  value={formData.lastname}
                   onChange={handleInputChange}
                   placeholder="Apellido"
                   required
@@ -65,8 +106,8 @@ const ContactSection = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">Correo</label>
               <input
                 type="email"
-                name="correo"
-                value={formData.correo}
+                name="email"
+                value={formData.email}
                 onChange={handleInputChange}
                 placeholder="tucorreo@ejemplo.com"
                 required
@@ -83,8 +124,8 @@ const ContactSection = () => {
                 </select>
                 <input
                   type="tel"
-                  name="telefono"
-                  value={formData.telefono}
+                  name="phone"
+                  value={formData.phone}
                   onChange={handleInputChange}
                   placeholder="+549 0000000"
                   required
@@ -97,8 +138,8 @@ const ContactSection = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
               <textarea
-                name="mensaje"
-                value={formData.mensaje}
+                name="message"
+                value={formData.message}
                 onChange={handleInputChange}
                 placeholder="Dejanos tus mensaje..."
                 rows={4}
@@ -118,6 +159,7 @@ const ContactSection = () => {
             {/* Submit Button */}
             <button
               type="submit"
+              disabled={loading}
               className="w-full bg-pink-600 hover:bg-pink-700 text-white py-3 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2"
             >
               ENVIAR MENSAJE
@@ -125,6 +167,8 @@ const ContactSection = () => {
                 <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
               </svg>
             </button>
+            {status === 'success' && <p>✅ Mensaje enviado correctamente</p>}
+            {status === 'error' && <p>❌ Error al enviar el mensaje</p>}
           </form>
         </div>
 
@@ -135,7 +179,7 @@ const ContactSection = () => {
               Hablemos: tu consulta es importante
             </h2>
             <p className="text-gray-600 mb-8">
-              Need something cleared up? Here are our most frequently asked questions.
+              ¿Necesitás aclarar algo? Aquí están nuestras preguntas más frecuentes.
             </p>
           </div>
 
@@ -148,9 +192,9 @@ const ContactSection = () => {
             </div>
             <div>
               <h3 className="font-bold text-gray-900 mb-2">Correo</h3>
-              <p className="text-gray-600 text-sm mb-2">Our friendly team is here to help.</p>
+              <p className="text-gray-600 text-sm mb-2">Nuestro equipo está aquí para ayudar.</p>
               <a href="mailto:Doctorado@gmail.com" className="text-gray-900 font-medium hover:underline">
-                Doctorado@gmail.com
+                geografiadoctorado@gmail.com
               </a>
             </div>
           </div>
@@ -202,6 +246,7 @@ const ContactSection = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

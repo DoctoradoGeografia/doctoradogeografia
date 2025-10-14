@@ -41,6 +41,21 @@ export default {
           11: '#28679d',
           12: '#213d57',
         },
+         // Gray theme
+        gray: {
+          1: '#fcfcfd',
+          2: '#f9f9fb',
+          3: '#eff0f3',
+          4: '#e7e8ec',
+          5: '#e0e1e6',
+          6: '#d8d9e0',
+          7: '#cdced7',
+          8: '#b9bbc6',
+          9: '#8b8d98',
+          10: '#80828d',
+          11: '#62636c',
+          12: '#1e1f24',
+        },
         // Principales - usaremos estos para theme-aware colors
         accent: {
           DEFAULT: '#216196', // blue por defecto

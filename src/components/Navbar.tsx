@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import SocialIcons from './SocialIcons';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { logout } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
+import { isAuthorizedUser } from '../services/AuthorizedUser';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -8,6 +13,26 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
+
+    // Función para estilos de NavLink activo
+  const getNavLinkClass = ({ isActive }: { isActive: boolean }) => {
+    return `text-text hover:text-blue-9 dark:hover:text-purple-9 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+      isActive 
+        ? 'text-blue-9 dark:text-purple-9 font-bold border-b-2 border-blue-9 dark:border-purple-9' 
+        : ''
+    }`;
+  };
+
+    // Verificar si el usuario está autorizado
+  const isAdmin = user && isAuthorizedUser(user.email);
 
   return (
     <nav className="bg-white shadow-sm">
@@ -39,13 +64,41 @@ const Navbar = () => {
             </div>
 
             {/* Login Button */}
-            <div>
+            <div className="flex items-center gap-4">
+              {user ? (
+          <>
+            {/* Mostrar botón de Dashboard solo si es admin */}
+                  {isAdmin && (
+            <Link 
+              to="/dashboard" 
+              className="text- hover:text-blue-9 dark:hover:text-purple-9 font-medium"
+            >
+              Dashboard
+            </Link>
+                  )}
+            <button
+              onClick={handleLogout}
+              className="bg-white text-text hover:text-white hover:bg-blue-9 dark:hover:bg-purple-9 dark:hover:text-white px-3 sm:px-4 py-1 rounded text-xs sm:text-sm transition-colors"
+            >
+              Cerrar Sesión
+            </button>
+            {user.photoURL && (
+              <img 
+                src={user.photoURL} 
+                alt={user.displayName || 'Usuario'} 
+                className="w-8 h-8 rounded-full border-2 border-blue-9 dark:border-purple-9"
+                referrerPolicy="no-referrer"
+              />
+            )}
+          </>
+        ) : (
               <Link
                 to="/login"
                 className="bg-white text-text hover:text-white hover:bg-blue-9 dark:hover:bg-purple-9 dark:hover:text-white px-3 sm:px-4 py-1 rounded text-xs sm:text-sm transition-colors"
               >
                 Iniciar Sesión
               </Link>
+              )}
             </div>
           </div>
         </div>
@@ -57,46 +110,45 @@ const Navbar = () => {
           <div className="flex justify-between items-center py-4">
             {/* Logo and Title */}
             <div className="flex items-center space-x-3">
-                <img src="https://i.imghippo.com/files/Elb9238oo.png" className="w-[30px] h-full object-contain"></img>
+                <a href="/">
+                <img 
+                src="https://i.imghippo.com/files/Elb9238oo.png" 
+                className="w-[30px] h-full object-contain"
+                alt="Logo">
+                </img>
+                </a>
               
               <div>
+                <a href="/">
                 <h1 className="text-base sm:text-xl font-bold text-gray-900 leading-tight">
                   DOCTORADO<br />
                   <span className="text-sm sm:text-base font-normal">EN GEOGRAFÍA</span>
                 </h1>
+                </a>
               </div>
             </div>
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex space-x-8 ">
-              <Link
-                to="/doctorado"
-                className="text-text hover:text-blue-9 dark:hover:text-purple-9 transition-colors font-medium"
-              >
+              <NavLink to="/" end className={getNavLinkClass}>
+                Inicio
+              </NavLink>
+              <NavLink to="/doctorado" className={getNavLinkClass}>
                 Doctorado
-              </Link>
-              <Link
-                to="/noticias"
-                className="text-text hover:text-blue-9 dark:hover:text-purple-9 transition-colors font-medium"
-              >
+              </NavLink>
+              <NavLink to="/noticias" className={getNavLinkClass}>
                 Noticias
-              </Link>
-              <Link
-                to="/cursos"
-                className="text-text hover:text-blue-9 dark:hover:text-purple-9 transition-colors font-medium"
-              >
+              </NavLink>
+              <NavLink to="/cursos" className={getNavLinkClass}>
                 Cursos
-              </Link>
-              <Link
-                to="/contacto"
-                className="text-text hover:text-blue-9 dark:hover:text-purple-9 transition-colors font-medium"
-              >
+              </NavLink>
+              <NavLink to="/contacto" className={getNavLinkClass}>
                 Contacto
-              </Link>
+              </NavLink>
             </div>
 
             {/* Right Side - Social Icons and FAQ (Desktop only) */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4">
               {/* Social Icons */}
               <SocialIcons />
 
